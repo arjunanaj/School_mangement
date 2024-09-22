@@ -1,0 +1,43 @@
+.container-fluid{
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #c3d4e2 100%);
+
+}
+
+.card{
+
+    background: none;
+  
+
+}
+
+
+.invalid-tooltip {
+    position: absolute;
+    top: auto;
+  
+    z-index: 5;
+    margin-left: 50px;
+    /* display: block; */
+  width:200px;
+ 
+    /* align-items: center; */
+    padding: .40rem .50rem;
+    margin-top: .5rem;
+    font-size: .875rem;
+    color: #fff;
+    background-color: #dc0016c1;
+    border-radius: var(--bs-border-radius);
+    font-weight: 700;
+}
+.invalid-tooltip::before{
+    content: "";
+    position: absolute;
+    top:-7.7px;
+    z-index: -1;
+    margin-left: 10px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #dc0016c1;
+    
+}
+   

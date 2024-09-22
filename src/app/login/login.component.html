@@ -1,0 +1,154 @@
+<app-header></app-header>
+
+<div class="container-fluid  ">
+  <div class="row justify-content-center min-vh-100 align-items-center ">
+  <section class="  mt-5 py-2 py-md-5 py-xl-8 ">
+    <div class="container mt-5">
+      <div class="row gy-4 align-items-center">
+        <div class="col-12 col-md-6 col-xl-7">
+          <div class="d-flex justify-content-center text-white">
+            <div class="col-12 col-xl-9">
+
+              <hr class="border-primary-subtle mb-4">
+              <h2 class="h1 mb-4">Sign in to your account using your registered credentials.</h2>
+              <p class="lead mb-5">Please sign in with your credentials to access the personalized account features and secure your authenticated entry into our platform.
+
+
+
+
+
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-5">
+          <div class="card border-0 rounded-4">
+            <div class="card-body p-3 p-md-4 p-xl-5">
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-4">
+                    <h3 class="text-primary">Sign in</h3>
+                    <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+                  </div>
+                </div>
+              </div>
+              <form #log="ngForm" class="needs-validation"  novalidate (ngSubmit)="log.form.valid&&loginNow()">
+                <div class="row gy-3 overflow-hidden">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" #email="ngModel" [(ngModel)]="login.emailId" name="email"
+                        id="email" placeholder="name@example.com" required>
+                      <label for="email" class="form-label">Email</label>
+                      <span *ngIf="this.loginning&&email.errors?.['required']">
+                        <div class="invalid-tooltip d-block text-center">
+                          pls fill the required field
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" #password="ngModel" [(ngModel)]="login.password"
+                        name="password" id="password" value="" placeholder="Password" required>
+                      <label for="password" class="form-label">Password</label>
+                      <span *ngIf="this.loginning&&password.errors?.['required']">
+                        <div class="invalid-feedback d-block text-center">
+                          pls fill the required field
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                      <label class="form-check-label text-secondary" for="remember_me">
+                        Keep me logged in
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-lg" (click)="this.loginning=true" type="submit">Login
+                        now</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end mt-4">
+                    <a class="text-link" routerLink="/forgotPassword">Forgot password</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p class="mt-3 mb-2">Or continue with</p>
+                  <div class="d-flex gap-2 gap-sm-3 justify-content-centerX">
+                    <a href="" class="btn btn-outline-danger rounded-pill bsb-btn-circle bsb-btn-circle-2xl">
+
+                      <fa-icon [icon]="google"></fa-icon>
+                    </a>
+                    <a href="https://www.facebook.com/login.php/" class="btn btn-outline-primary rounded-pill bsb-btn-circle bsb-btn-circle-2xl ">
+                      <fa-icon [icon]="facebook"></fa-icon>
+                    </a>
+                    <a href="https://twitter.com/i/flow/login" class="btn btn-outline-dark rounded-pill bsb-btn-circle bsb-btn-circle-2xl">
+                      <fa-icon [icon]="tiwtter"></fa-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+
+
+
+<div class="modal " id="statusErrorsModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center p-lg-4">
+        <a href="#!" class="text-danger display-1">
+
+          <fa-icon [icon]="error"></fa-icon>
+        </a>
+      
+        <h4 class="text-danger mt-2">invalidUser..!</h4>
+        <p class="mt-2 text-center ">EmailId & Password
+          <br> Not Match
+        <p>
+      
+          <button type="button" class="btn btn-sm btn-danger" (click)="closeInvalidUserModel()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal " id="backendErrorsModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center p-lg-4">
+        <a href="#!" class="text-danger display-1">
+
+          <fa-icon [icon]="error"></fa-icon>
+        </a>
+
+        <p class="mt-2 text-center ">EmailId Not Found
+          <br>Pls Check
+        <p>
+          <button type="button" class="btn btn-sm btn-danger" (click)="closeBackendModel()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

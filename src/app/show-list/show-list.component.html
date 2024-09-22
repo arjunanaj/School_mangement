@@ -1,0 +1,221 @@
+<app-header></app-header>
+
+<div *ngIf="!this.showNgTemplate">
+  <div class="container-fluid min-vh-100">
+    <div class="row">
+      <section class=" mt-5 py-2 py-md-5  ">
+        <div class="container mt-4">
+          <div class="row gy-4 align-items-center">
+            <div class="col-12 ">
+
+              <section class="mt-4 mt-md-1">
+
+                <div class="row justify-content-end ">
+                  <div class="search col-md-4 col-12 mb-2">
+
+                    <h5 class="mt-2 text-center text-muted">Input your first name to initiate the search</h5>
+
+                  </div>
+                  <div class="search col-md-3 col-12 mb-2">
+
+                    <input class="form-control " type="text" name="firstName" [(ngModel)]="searchByname "
+                      (ngModelChange)="search()" placeholder="Firstname">
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-12 col-md-3  col-xl-2 mt-4 mb-5  mt-md-0"
+                    *ngFor="let student of students|paginate:{itemsPerPage:  noOfItems,currentPage: pageNo}; let i=index">
+                    <div class="card card_red ">
+                      <span class="card-notify-year text-center">{{i+1}}</span>
+
+                  
+                      <div class="mt-5 text-center">
+                        
+                        <h3>{{student.id}}</h3>
+                        <h4 id="name">{{student.firstName|uppercase}}</h4>
+                      </div>
+
+                      <div class="mb-2 px-2 text-center">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#modalId"
+                          (click)="getStd(student.id)" class=" w-100  btn  mt-4" id="btn">
+                          View Details
+                          <fa-icon class="ms-2 " [icon]="right"></fa-icon>
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </section>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="row fixed-bottom ">
+          <div class="pagination  ">
+            <pagination-controls (pageChange)="pageNo = $event"></pagination-controls>
+          </div>
+        </div>
+        <div class="row  justify-content-center  "*ngIf="this.searchPerformed">
+          <img
+            src="../../assets/img/Questions-amico.png"
+            class="img-fluid rounded-top mt-5"
+            style="height: 200px; width: 200px;"
+          />
+          
+          <h1 class="text-center ">No Student Found </h1>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="this.showNgTemplate">
+  <div class="container-fluid  ">
+    <div class="container ">
+      <div class="row justify-content-center min-vh-100 align-items-center mt-5 mt-xl-0">
+        <div class="text-center">
+          <img style="height: 200px;" src="../../assets/img/Questions-amico.png" class="img-fluid rounded-top"
+            alt="noimage" />
+          <br>
+          <h1> No Info Found To Get </h1>
+          <p class="mb-2 mt-4 text-secondary text-center">Click here to add info <a routerLink="/addStudent"
+              class="link-primary text-decoration-none ms-2">AddNow</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal " id="modalId" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false" role="dialog"
+ >
+  <div class="modal-dialog  modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content modal-content1 rounded-4">
+
+      <div class=" row justify-content-end me-3 mt-3">
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <div class="table-responsive ">
+          <table class="table table-borderless ">
+            <tbody>
+              <tr>
+                <th>FirstName</th>
+                <td>{{this.singleStudent.firstName}}</td>
+              </tr>
+              <tr>
+                <th>LastName</th>
+                <td>{{this.singleStudent.lastName}}</td>
+              </tr>
+              <tr>
+                <th>Course</th>
+                <td>{{this.singleStudent.course}}</td>
+              </tr>
+              <tr>
+                <th>AdmissionDate</th>
+                <td>{{this.singleStudent.admissionDate}}</td>
+              </tr>
+              <tr>
+                <th>AdmissionFees</th>
+                <td>{{this.singleStudent.admissionFees}}</td>
+              </tr>
+              <tr>
+                <th>Contact</th>
+                <td>{{this.singleStudent.phoneNumber}}</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>{{this.singleStudent.address}}</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+    
+
+        
+
+        <div class="row justify-content-center  mt-2 mb-2 ">
+
+          <button type="button" class="btn w-25 mx-1  rounded-pill btn-outline-primary "
+            (click)="updateStd(singleStudent.id)"> <fa-icon [icon]="edit"></fa-icon></button>
+          <button type="button" class="btn  mx-1 w-25 rounded-pill btn-outline-danger"
+            (click)="deleteUser(singleStudent.id)"> <fa-icon [icon]="delete"></fa-icon></button>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal  " id="confirmModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog px-3 modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content ">
+      <div class="modal-body text-center " id="modal-body">
+        <a href="#!" class="text-warning display-4">
+
+          <fa-icon [icon]="warning"></fa-icon>
+        </a>
+
+        <div>
+          <h4 class=" mt-2">Are you Sure..?</h4>
+          <p class="mt-2 mb-3 text-center ">Do you want delete it
+        </div>
+
+        <div>
+          <button type="button" class="btn btn-sm btn-success mx-2" (click)="confirmIt()">Yes</button>
+          <button type="button" class="btn btn-sm btn-danger mx-2" (click)=" returnIt()">No</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal " id="statussuccesssModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  data-bs-keyboard="false">
+  <div class="modal-dialog px-3 modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center p-lg-4">
+        <a href="#!" class="text-success display-4">
+
+          <fa-icon [icon]="success"></fa-icon>
+        </a>
+
+        <div>
+          <h4 class="text-success mt-2">Delete sucessfully</h4>
+          <p class="mt-2 text-center ">Check It Now
+        </div>
+
+
+
+        <button type="button" class="btn btn-sm btn-success" (click)="sucessModel()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

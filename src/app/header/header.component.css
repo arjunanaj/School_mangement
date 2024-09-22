@@ -1,0 +1,131 @@
+
+#nav{
+  background-image: linear-gradient( 90.1deg,  rgb(88, 88, 88) 0.2%, rgb(75, 73, 73) 99.9% );
+}
+
+
+  .offcanvas {
+    width: 250px; 
+  }
+ 
+
+  .navbar .navbar-nav .nav-item {
+    position: relative;
+  }
+  .navbar .navbar-nav .nav-item::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    content: "";
+    background-color: rgb(255, 255, 255);
+    width: 0%;
+    height: 3px;
+    transition: all 0.5s ease-in-out;
+  }
+  .navbar .navbar-nav .nav-item:hover::after {
+    width: 100%;
+  }
+  #myModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Style for the button */
+  #myButton {
+    padding: 10px;
+    cursor: pointer;
+  }
+ #span{
+    line-height: 18px;
+  }
+
+  
+ #profileIcon{
+   
+    color: #ffffff;
+    border-radius: 100px;
+ }
+ #existicon{
+    display: flex;
+    justify-content: right;
+ 
+ }
+ .invalid-tooltip {
+  position: absolute;
+  top: auto;
+
+  z-index: 5;
+  margin-left: 50px;
+  /* display: block; */
+width:200px;
+
+  /* align-items: center; */
+  padding: .40rem .50rem;
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: #fff;
+  background-color: #dc0016c1;
+  border-radius: var(--bs-border-radius);
+  font-weight: 700;
+}
+.invalid-tooltip::before{
+  content: "";
+  position: absolute;
+  top:-7.7px;
+  z-index: -1;
+  margin-left: 10px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #dc0016c1;
+  
+}
+
+#modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 320px;
+ height: 250px;
+  right: 3px;
+}
+#modal-content {
+  margin-top: 100px;
+   background: #ffffff;
+   box-shadow: rgba(0, 0, 0, 0.701) 0px 5px 15px;
+ 
+}
+
+
+.profileimage{
+
+  width: 35px;
+	height: 35px;
+	border-radius: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  object-fit: cover;
+  border: 3px solid #fff; /* Border color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+
+.profileimage2{
+
+  width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 40px;
+    object-fit: cover;
+    border: 3px solid #fff; /* Border color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.53); /* Shadow effect */
+   
+  }
+ 

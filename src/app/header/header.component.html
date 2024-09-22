@@ -1,0 +1,209 @@
+<header>
+
+  <nav class="navbar fixed-top navbar-expand-lg " id="nav">
+    <a class="navbar-brand mx-auto h1 text-center text-light" href="#">
+
+      Student-Management-System
+    </a>
+    <!-- Add your navigation links or other content here -->
+  </nav>
+
+</header>
+
+
+
+<nav class="navbar fixed-top mt-5  navbar-expand-lg navbar-light bg-dark p-2 ">
+  <div class="container-fluid">
+    <a href="#" class="navbar-brand text-white">
+      <img
+        src="../../assets/img/admission.png"
+        class="img-fluid rounded-top"
+        alt=""
+      />
+      
+     </a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas"
+      aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start bg-dark" id="navbarOffcanvas" tabindex="-1"
+      aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel"> Student-Management-System</h5>
+        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ng-container *ngIf="this.loginservice.isAuthenticate() then authenticate else notAuthenticate"></ng-container>
+        <ng-template #notAuthenticate>
+          <ul class="navbar-nav ms-auto ">
+
+            <li class="nav-item ">
+              <a class="nav-link mx-md-4 text-light  mx-0 " aria-current="page" routerLink="/abstract">Abstract</a>
+            </li>
+            <li class="nav-item  ">
+              <a class="nav-link  mx-md-4  text-light mx-0" routerLink="/compo_1">Component1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  mx-md-4  text-light mx-0"routerLink="/compo_2">Component2</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link text-light  mx-md-4  mx-0 dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Add-Info</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" routerLink="/addAbstract">Add Abstract</a>
+                <a class="dropdown-item" routerLink="/addComponent_1">Add Component-1</a>
+                <a class="dropdown-item" routerLink="/addComponent_2">Add Component-2</a>
+              </div>
+            </li>
+
+
+          </ul>
+
+
+
+          <ul class="navbar-nav ms-auto text-center mt-lg-0 mt-5  d-lg-inline-flex d-inline ">
+
+
+
+            <li class=" mx-2    d-inline ">
+              <button type="button" class=" btn btn-outline-info rounded-pill text-light h5"
+                routerLink="/signin">SignIn</button>
+            </li>
+            <li class=" mx-2 d-inline">
+              <button type="button" class=" btn btn-outline-primary rounded-pill text-light h5"
+                routerLink="/signup">SignUp</button>
+            </li>
+
+
+          </ul>
+        </ng-template>
+        <ng-template #authenticate>
+          <ul class="navbar-nav ms-auto ">
+         
+         
+            <li class="nav-item">
+              <a class="nav-link text-light  mx-4" routerLink="/addStudent">Add-Student</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light  mx-4" routerLink="/showStudent">Show-List</a>
+            </li>
+          
+           
+        
+
+
+          </ul>
+
+          <ul class="navbar-nav ms-auto mt-lg-0 mt-5  d-lg-inline-flex d-inline ">
+            <span  id="span"class="text-light  text-center mx-1 d-none d-lg-inline">
+              welcome <br>
+              {{emailId|nameCrop}}</span>
+
+            <li class=" mx-4 mt-2 mt-md-1 h-100 align-items-center">
+           
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modal" id="btn"  >
+                <img class="profileimage" [src]=" profileImage"  alt="" *ngIf="!this.checkImage">
+                <img class="profileimage" src="../../assets/img/user (1).png" *ngIf="this.checkImage">
+              </a>
+            </li>
+          
+          </ul>
+
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal " id="modal" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div id="modal-dialog" class="modal-dialog modal-dialog-scrollable modal-dialog modal-sm" role="document">
+      <div class="modal-content" id="modal-content">
+         
+          <div class="modal-body" id="modal" *ngIf="this.showModal=='viewProfileModal'">
+            <div class=" row justify-content-end mb-2 me-2 ">
+              <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      
+            </div>
+              <div class="row">
+                  <div class="col-md-4 col-4  justify-content-center">
+                    <img class="profileimage2" src="../../assets/img/user (1).png" *ngIf="this.checkImage">
+                    <img class=" profileimage2 ms-2"  [src]=" profileImage" *ngIf="!this.checkImage">
+                      <a class="nav-link mt-1 text-primary text-center" (click)="onclickToProfile()"  >Edit</a>
+               
+                </div>
+                  <div class="col-md-8 mt-1 col-8 text-primary ">
+                      <h6 class="text-dark">{{emailId}}</h6>
+                      
+                      <a>ManageAccount</a>
+                  
+                  </div>
+                  <div  class="text-center  mt-2">
+                     <a class="btn btn-outline-primary rounded-pill" id="LogOut" (click)="logout()">SignOut</a>
+                  </div>
+              </div>
+             
+          </div>
+
+          <div class="modal-body" *ngIf="this.showModal=='viewEditModal'">
+            <div class=" row justify-content-end mb-2 me-2 ">
+              <button type="button" class="btn-close " (click)="closeEditModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+      
+            </div>
+            <form action="" #reg="ngForm" novalidate (ngSubmit)="reg.form.valid&&uploadImage()" id="form">
+          
+              <div class="mt-3 mx-3 input">
+    
+                <input type="file" class="form-control" #filename="ngModel" (change)="onFileChanged($event)"
+                  [(ngModel)]="image" name="name" id="name" placeholder="username" required="">
+                <span *ngIf="this.registering&&filename.errors?.['required']">
+                  <div class="invalid-tooltip d-block text-center">
+                    pls fill the required field
+                  </div>
+                </span>
+              </div>
+    
+    
+              <div class="mt-3 text-center">
+               
+                <button class="btn btn-info" type="submit" (click)="registering=true">UploadNow</button>
+              </div>
+    
+    
+    
+            </form>
+    
+      
+    
+          </div>
+         
+      </div>
+  </div>
+</div>
+
+
+<div class="modal " id="successsModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+data-bs-keyboard="false">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body text-center p-lg-4">
+      <a href="#!" class="text-success display-1">
+
+        <fa-icon [icon]="success"></fa-icon>
+      </a>
+
+      <div>
+        <h4 class="text-success mt-2">Image Upload Sucessfully</h4>
+        <p class="mt-2 text-center ">Check It Now
+      </div>
+      <button type="button" class="btn btn-sm btn-success" (click)="sucessModel()">Ok</button>
+    </div>
+  </div>
+</div>
+</div>
+

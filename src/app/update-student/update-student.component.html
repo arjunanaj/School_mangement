@@ -1,0 +1,188 @@
+
+
+
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="row justify-content-center min-vh-100 align-items-center ">
+    <section class="  mt-5 py-2 py-md-5 py-xl-8 ">
+      <div class="container mt-4">
+        <div class="row justify-content-center gy-4 align-items-center">
+            
+       
+          <div class="col-12 col-md-5 col-xl-6">
+            <div class="card border-0 rounded-4 ">
+              <div class="card-body p-3 p-md-4 p-xl-5">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-4">
+                      <h3 class="text-primary">Update Student</h3>
+                      <h6 class="text-muted mt-3 font-weight-bold"> Adjust, alter, or fine-tune intricate student data details.</h6>
+
+                    </div>
+                  </div>
+                </div>
+                <form #addstd="ngForm" novalidate (ngSubmit)="addstd.form.valid&& OnUpdateStudent()">
+                  <div class="row gy-3 overflow-hidden">
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" #firstname="ngModel"
+                              [(ngModel)]="updateStudent.firstName" name="firstName" id="firstName" placeholder="firstName"
+                              required>
+                            <label for="firstName" class="form-label">FirstName</label>
+                            <span *ngIf="this.loginning &&firstname.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" #lastname="ngModel"
+                              [(ngModel)]="updateStudent.lastName" name="lastName" id="lastName" placeholder="lastName"
+                              required>
+                            <label for="lastName" class="form-label">LastName</label>
+                            <span *ngIf="this.loginning &&lastname.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-md-6 col-12">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" #course="ngModel" [(ngModel)]="updateStudent.course"
+                              name="course" id="course" placeholder="course" required>
+                            <label for="age" class="form-label">Course</label>
+                            <span *ngIf="this.loginning &&course.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                     
+                          <div class="form-floating mb-3">
+                            <input type="date" class="form-control" #admissionDate="ngModel"
+                              [(ngModel)]="updateStudent.admissionDate" name="admissionDate" id="admissionDate" placeholder="Dob" required>
+                            <label for="admissionDate" class="form-label">AdmissionDate</label>
+                            <span *ngIf="this.loginning && admissionDate.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" #admissionFees="ngModel"
+                              [(ngModel)]="updateStudent.admissionFees" name="admissionFees" id="admissionFees" placeholder="admissionFees" required>
+                            <label for="admissionFees" class="form-label">AdmissionFees</label>
+                            <span *ngIf="this.loginning && admissionFees.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" #contactnumber="ngModel"
+                              [(ngModel)]="updateStudent.phoneNumber" name="ContactNumber" id="ContactNumber"
+                              placeholder="ContactNumber" required>
+                            <label for="lastName" class="form-label">ContactNumber</label>
+                            <span *ngIf="this.loginning && contactnumber.errors?.['required']">
+                              <div class="invalid-tooltip d-block text-center">
+                                pls fill the required field
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+
+
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" #address="ngModel" [(ngModel)]="updateStudent.address"
+                          name="address" id="address" placeholder="address" required>
+                        <label for="lastName" class="form-label">Address</label>
+                        <span *ngIf="this.loginning && address.errors?.['required']">
+                          <div class="invalid-tooltip d-block text-center">
+                            pls fill the required field
+                          </div>
+                        </span>
+                      </div>
+
+                    </div>
+
+
+                    <div class="col-12">
+                      <div class="d-grid  mt-3">
+                        <div class="text-center">
+                          <button class="btn btn-outline-primary w-75 btn-lg" (click)="this.loginning=true" type="submit">Update in
+                            now</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-12 col-md-6 col-xl-6">
+            <div class="d-flex justify-content-center text-white">
+          
+
+                <img src="../../assets/img/Students-rafiki.png" class="img-fluid rounded-top" alt="" />
+
+
+             
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal " id="statussuccesssModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center p-lg-4">
+          <a href="#!" class="text-success display-1">
+
+            <fa-icon [icon]="success"></fa-icon>
+          </a>
+
+          <div>
+            <h4 class="text-success mt-2">Update sucessfully</h4>
+            <p class="mt-2 text-center ">Check It Now
+          </div>
+          <button type="button" class="btn btn-sm btn-success" (click)="sucessModel()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,79 @@
+.container-fluid {
+
+    background-image: linear-gradient(-225deg, #7DE2FC 0%, #948cfd 100%);
+}
+.card{
+    box-shadow: rgba(91, 91, 91, 0.35) 0px 5px 15px;
+  }
+.invalid-tooltip {
+    position: absolute;
+    top: auto;
+  
+    z-index: 5;
+    margin-left: 100px;
+    /* display: block; */
+  width:200px;
+ 
+    /* align-items: center; */
+    padding: .40rem .50rem;
+    margin-top: .5rem;
+    font-size: .875rem;
+    color: #fff;
+    background-color: #dc0016c1;
+    border-radius: var(--bs-border-radius);
+    font-weight: 700;
+}
+.invalid-tooltip::before{
+    content: "";
+    position: absolute;
+    top:-7.7px;
+    z-index: -1;
+    margin-left: 10px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #dc0016c1;
+    
+}
+   
+
+
+
+.project-tab {
+    padding: 10%;
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}

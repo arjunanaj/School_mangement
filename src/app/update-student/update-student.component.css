@@ -1,0 +1,12 @@
+
+.container-fluid{
+  
+    background-image: linear-gradient(135deg, #e1e1e0eb 0%, #c3d4e2e0 100%);
+    background-size: cover;
+    background-position: center;
+  
+}
+.card{
+    background: none;
+   
+}

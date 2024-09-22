@@ -1,0 +1,303 @@
+<app-header></app-header>
+<div class="container-fluid bg-info ">
+    <div class="row justify-content-center min-vh-100 align-items-center ">
+        <div class=" mt-5 py-3 py-md-5">
+            <div class="container mt-5">
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+                        <div class="bg-white p-4  p-md-2 rounded-4  shadow-sm">
+
+
+                            <section id="tabs" class="project-tab ">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <nav>
+                                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link active" id="nav-home-tab"
+                                                        data-bs-toggle="tab" data-bs-target="#nav-home" role="tab"
+                                                        aria-controls="nav-home" aria-selected="true">AddComponent-2</a>
+                                                    <a class="nav-item nav-link" id="nav-profile-tab"
+                                                        data-bs-toggle="tab" data-bs-target="#nav-contact" role="tab"
+                                                        aria-controls="nav-profile"
+                                                        aria-selected="false">UpdateComponent-2</a>
+
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content mt-4" id="nav-tabContent">
+                                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                                    aria-labelledby="nav-home-tab">
+                                                    <h6 class="text-muted mb-3  font-weight-bold">Furnish information on your component.</h6>
+
+                                                    <form #addcompo1="ngForm" novalidate
+                                                        (ngSubmit)="addcompo1.form.valid&& addNewComponent()">
+                                                        <div class="row gy-1 overflow-hidden">
+                                                            <div class="col-12">
+                                                                <div class=" mb-2">
+                                                                    <label for="info" class="form-label">Info <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <textarea class="form-control form-control-md"
+                                                                        id="info" #info="ngModel"
+                                                                        [(ngModel)]="addComponent.componentDef"
+                                                                        name="info" rows="2" required></textarea>
+                                                                    <span
+                                                                        *ngIf="this.addloginning&&info.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 ">
+                                                                <div class=" mb-2">
+                                                                    <label for="addimage1" class="form-label">Image-1 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #addimage1="ngModel"
+                                                                        [(ngModel)]="addComponent.componentImage1"
+                                                                        (change)="onAddFileChange($event, 'file1')"
+                                                                        name="addimage1" id="addimage1"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.addloginning&&addimage1.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-0">
+                                                                <div class="mb-2">
+                                                                    <label for="addimage2" class="form-label">Image-2 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #addimage2="ngModel"
+                                                                        [(ngModel)]="addComponent.componentImage2"
+                                                                        (change)="onAddFileChange($event, 'file2')"
+                                                                        name="addimage2" id="addimage2"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.addloginning&&addimage2.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-0">
+                                                                <div class="mb-2">
+                                                                    <label for="addimage3" class="form-label">Image-3 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #addimage3="ngModel"
+                                                                        [(ngModel)]="addComponent.componentImage3"
+                                                                        (change)="onAddFileChange($event, 'file3')"
+                                                                        name="addimage3" id="addimage3"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.addloginning&&addimage3.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-12">
+                                                                <div class="d-grid mt-3">
+                                                                    <button class="btn  btn-primary btn-md "
+                                                                        (click)="this.addloginning=true"
+                                                                        type="submit">Add in
+                                                                        now</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+
+                                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                                    aria-labelledby="nav-contact-tab">
+                                                    <h6 class="text-muted mb-3  font-weight-bold"> Amend your own component records.
+                                                    </h6>
+                                                    <form #updatecompo1="ngForm" novalidate
+                                                        (ngSubmit)="updatecompo1.form.valid&& updateNewComponent()">
+                                                        <div class="row gy-1 overflow-hidden">
+                                                            <div class="col-12">
+                                                                <div class=" mb-2">
+                                                                    <label for="upadateinfo" class="form-label">Info <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <textarea class="form-control form-control-md"
+                                                                        id="upadateinfo" #upadateinfo="ngModel"
+                                                                        [(ngModel)]="updateComponent.componentDef"
+                                                                        name="info" rows="2" required></textarea>
+                                                                    <span
+                                                                        *ngIf="this.updateloginning&&upadateinfo.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 ">
+                                                                <div class=" mb-2">
+                                                                    <label for="updateimage1" class="form-label">Image-1 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #updateimage1="ngModel"
+                                                                        [(ngModel)]="updateComponent.componentImage1"
+                                                                        (change)="onUpdateFileChange($event, 'file1')"
+                                                                        name="updateimage1" id="updateimage1"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.updateloginning&&updateimage1.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-0">
+                                                                <div class="mb-2">
+                                                                    <label for="updateimage2" class="form-label">Image-2 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #updateimage2="ngModel"
+                                                                        [(ngModel)]="updateComponent.componentImage2"
+                                                                        (change)="onUpdateFileChange($event, 'file2')"
+                                                                        name="updateimage2" id="updateimage2"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.updateloginning&&updateimage2.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-0">
+                                                                <div class="mb-2">
+                                                                    <label for="updateimage3" class="form-label">Image-3 <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="file"
+                                                                        class="form-control form-control-md"
+                                                                        #updateimage3="ngModel"
+                                                                        [(ngModel)]="updateComponent.componentImage3"
+                                                                        (change)="onUpdateFileChange($event, 'file3')"
+                                                                        name="updateimage3" id="updateimage3"
+                                                                        placeholder="No file selected" required>
+
+                                                                    <span
+                                                                        *ngIf="this.updateloginning&&updateimage3.errors?.['required']">
+                                                                        <div
+                                                                            class="invalid-tooltip d-block text-center">
+                                                                            pls fill the required field
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-12">
+                                                                <div class="d-grid mt-3">
+                                                                    <button class="btn  btn-primary btn-md "
+                                                                        (click)="this.updateloginning=true"
+                                                                        type="submit">Update in
+                                                                        now</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal " id="statussuccesssModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <a href="#!" class="text-success display-1">
+
+                    <fa-icon [icon]="success"></fa-icon>
+                </a>
+
+                <div *ngIf="this.showSuccessModel=='add'">
+                    <h4 class="text-success mt-2">Add sucessfully</h4>
+                    <p class="mt-2 text-center ">Check It Now
+                </div>
+                <div *ngIf="this.showSuccessModel=='update'">
+                    <h4 class="text-success mt-2">update sucessfully</h4>
+                    <p class="mt-2 text-center ">Check It Now
+                </div>
+
+
+
+                <button type="button" class="btn btn-sm btn-success" (click)="sucessModel()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal " id="statusErrorModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <a href="#!" class="text-danger display-1">
+
+                    <fa-icon [icon]="error"></fa-icon>
+                </a>
+                <div *ngIf="this.showErrorModel=='Service.Max_Limit_reached_Def'">
+                    <h4 class="text-danger mt-2"> Max Limit Reached</h4>
+                    <p class="mt-2 text-center ">Pls Check Words Not <br> More Than Of 300
+                </div>
+                <div *ngIf="this.showErrorModel=='Service.Max_Limit_reached_Img_1'">
+                    <h4 class="text-danger mt-2"> Max Limit Reached on Image 1</h4>
+                    <p class="mt-2 text-center ">Pls Check Img Size
+                </div>
+                <div *ngIf="this.showErrorModel=='Service.Max_Limit_reached_Img_2'">
+                    <h4 class="text-danger mt-2"> Max Limit Reached on Image 2</h4>
+                    <p class="mt-2 text-center ">Pls Check Img Size
+                </div>
+                <div *ngIf="this.showErrorModel=='Service.Max_Limit_reached_Img_3'">
+                    <h4 class="text-danger mt-2"> Max Limit Reached on Image 3</h4>
+                    <p class="mt-2 text-center ">Pls Check Img Size
+                </div>
+                <button type="button" class="btn btn-sm btn-danger" (click)="existsModel()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
