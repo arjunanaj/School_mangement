@@ -11,6 +11,8 @@
       "prefix": "app",
       "architect": {
         "build": {
+
+          
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ang-std",
@@ -22,15 +24,26 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {"glob": "**/*","input": "src/assets","output": "./assets"}
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+      
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+                    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -46,6 +59,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -94,5 +113,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fee96920-1598-4516-bc33-97951d1879e6"
   }
 }
